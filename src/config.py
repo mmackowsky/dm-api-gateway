@@ -9,6 +9,7 @@ load_dotenv()
 
 class Settings(BaseSettings):
     service_port: int = os.getenv("SERVICE_PORT")
+    service_host: str = os.getenv("SERVICE_HOST")
 
     class Config:
         env_file = ".env"
