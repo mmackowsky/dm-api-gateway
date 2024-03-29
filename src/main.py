@@ -8,10 +8,11 @@ app = FastAPI()
 settings = get_settings()
 
 
-@app.post("/api/public")
+@app.post("/api/users/login")
 async def login(data: dict):
     response = requests.post(url="http://127.0.0.1:8002", data=data)
     if response.status_code == 200:
+        # access refresh token
         print("Data send successfully")
     return data
 
