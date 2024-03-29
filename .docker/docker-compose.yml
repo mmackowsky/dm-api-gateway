@@ -2,13 +2,12 @@ version: '3.9'
 
 services:
   web:
-    build: .
-    command: bash -c "python src/main.py"
+    build:
+      context: ../
+      dockerfile: .docker/Dockerfile
+    command: bash -c "poetry run python src/main.py"
     container_name: dm-api-gateway
     volumes:
       - .:/dm-api-gateway
     ports:
-      - "8001:8001"
-    depends_on:
-      db:
-        condition: service_healthy
+      - "8100:8100"
