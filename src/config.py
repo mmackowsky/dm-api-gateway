@@ -8,6 +8,8 @@ load_dotenv()
 
 
 class Settings(BaseSettings):
+    secret_key: str = os.getenv("SECRET_KEY")
+    algorithm: str = os.getenv("ALGORITHM")
     service_port: int = os.getenv("SERVICE_PORT")
     service_host: str = os.getenv("SERVICE_HOST")
     users_service_url: str = os.getenv("USERS_SERVICE_URL")
