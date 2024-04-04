@@ -1,8 +1,9 @@
+import uvicorn
 from fastapi import FastAPI, Request, Response, status
 
 from config import get_settings
+from datastructures.users import UserForm, UsernamePasswordForm, UserUpdateForm
 from decorator import route
-from structures.users import UserForm, UsernamePasswordForm, UserUpdateForm
 
 app = FastAPI()
 settings = get_settings()
@@ -109,3 +110,7 @@ async def update_user(
     user_id: int, user: UserUpdateForm, request: Request, response: Response
 ):
     pass
+
+
+if __name__ == "__main__":
+    uvicorn.run(app, host=settings.SERVICE_HOST, port=settings.SERVICE_PORT)
