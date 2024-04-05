@@ -22,7 +22,7 @@ def generate_access_token(
     }
 
     encoded_jwt = jwt.encode(
-        token_data, settings.secret_key, algorithm=settings.algorithm
+        token_data, settings.SECRET_KEY, algorithm=settings.ALGORITHM
     )
     return encoded_jwt
 
@@ -31,9 +31,9 @@ def decode_access_token(authorization: str = None):
     if not authorization:
         raise AuthTokenMissing("Auth token is missing in headers.")
 
-    token = authorization.replace("Bearer ", "")
+    token = authorization.replace("Bearer: ", "")
     try:
-        payload = jwt.decode(token, settings.secret_key, algorithms=settings.algorithm)
+        payload = jwt.decode(token, settings.SECRET_KEY, algorithms=settings.ALGORITHM)
         return payload
     except jwt.exceptions.ExpiredSignatureError:
         raise AuthTokenExpired("Auth token is expired.")
