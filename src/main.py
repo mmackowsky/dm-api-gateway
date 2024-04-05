@@ -2,7 +2,12 @@ import uvicorn
 from fastapi import FastAPI, Request, Response, status
 
 from config import get_settings
-from datastructures.users import UserForm, UsernamePasswordForm, UserUpdateForm
+from datastructures.users import (
+    LoginResponse,
+    UserForm,
+    UsernamePasswordForm,
+    UserUpdateForm,
+)
 from decorator import route
 
 app = FastAPI()
@@ -16,7 +21,7 @@ settings = get_settings()
     payload_key="username_password",
     service_url=settings.USERS_SERVICE_URL,
     authentication_required=False,
-    post_processing_func="post_processing.access_token_generate_handler",
+    post_processing_func="processing.access_token_generate_handler",
     response_model="datastructures.users.LoginResponse",
 )
 async def login(
