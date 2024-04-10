@@ -7,9 +7,15 @@ class UsernamePasswordForm(BaseModel):
 
 
 class UserForm(UsernamePasswordForm):
+    """
+    id, hashed_password = None  -> fields is set in users-service
+    """
+
+    id: int = None
     email: str = None
     full_name: str = None
     user_type: str = "default"
+    hashed_password: str = None
 
 
 class UserUpdateForm(BaseModel):
@@ -25,10 +31,12 @@ class LoginResponse(BaseModel):
 
 
 class UserResponse(BaseModel):
-    id: int
+    id: int = None
     username: str
     email: str = None
     full_name: str = None
     user_type: str
-    hashed_password: str
-    created_by: int
+    hashed_password: str = None
+
+    # class Config:
+    #     orm_mode = True
