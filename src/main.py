@@ -36,14 +36,14 @@ async def login(
     status_code=status.HTTP_201_CREATED,
     payload_key="user",
     service_url=settings.USERS_SERVICE_URL,
-    authentication_required=True,
+    authentication_required=False,
     post_processing_func=None,
-    authentication_token_decoder="auth.decode_access_token",
-    service_authorization_checker="auth.is_admin_user",
-    service_header_generator="auth.generate_request_header",
+    # authentication_token_decoder="auth.decode_access_token",
+    # service_authorization_checker="auth.is_admin_user",
+    # service_header_generator="auth.generate_request_header",
     response_model="datastructures.users.UserResponse",
 )
-async def create_user(user: UserForm, request: Request, response: Response):
+async def register(user: UserForm, request: Request, response: Response):
     pass
 
 
