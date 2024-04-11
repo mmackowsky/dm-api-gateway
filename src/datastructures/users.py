@@ -1,3 +1,5 @@
+from typing import Optional
+
 from pydantic import BaseModel
 
 
@@ -33,8 +35,8 @@ class LoginResponse(BaseModel):
 class UserResponse(BaseModel):
     id: int = None
     username: str
-    email: str = None
-    full_name: str = None
+    email: Optional[str] = None
+    full_name: Optional[str] = None
     user_type: str
     hashed_password: str = None
 
