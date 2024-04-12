@@ -33,12 +33,12 @@ class LoginResponse(BaseModel):
 
 
 class UserResponse(BaseModel):
-    id: int = None
+    id: int
     username: str
     email: Optional[str] = None
     full_name: Optional[str] = None
     user_type: str
-    hashed_password: str = None
+    hashed_password: str
 
     # class Config:
     #     orm_mode = True
