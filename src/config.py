@@ -13,6 +13,7 @@ class Settings(BaseSettings):
     SERVICE_PORT: int = os.getenv("SERVICE_PORT")
     SERVICE_HOST: str = os.getenv("SERVICE_HOST")
     USERS_SERVICE_URL: str = os.getenv("USERS_SERVICE_URL")
+    ENERGY_SERVICE_URL: str = os.getenv("ENERGY_SERVICE_URL")
     GATEWAY_TIMEOUT: int = os.getenv("GATEWAY_TIMEOUT")
     ACCESS_TOKEN_DEFAULT_EXPIRE_MINUTES: int = os.getenv(
         "ACCESS_TOKEN_DEFAULT_EXPIRE_MINUTES"
