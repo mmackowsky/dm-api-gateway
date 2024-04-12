@@ -117,5 +117,22 @@ async def update_user(
     pass
 
 
+@route(
+    request_method=app.get,
+    path="/api/energy",
+    status_code=status.HTTP_200_OK,
+    payload_key=None,
+    service_url=settings.ENERGY_SERVICE_URL,
+    authentication_required=True,
+    post_processing_func=None,
+    authentication_token_decoder="auth.decode_access_token",
+    service_authorization_checker="auth.is_default_user",  # CHANGE FROM is_admin_user to is_default_user
+    service_header_generator="auth.generate_request_header",
+    # response_model="datastructures.users.UserResponse",
+)
+async def get_energy(request: Request, response: Response):
+    pass
+
+
 if __name__ == "__main__":
     uvicorn.run(app, host=settings.SERVICE_HOST, port=settings.SERVICE_PORT)
