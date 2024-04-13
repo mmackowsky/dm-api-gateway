@@ -56,7 +56,7 @@ async def register(user: UserForm, request: Request, response: Response):
     authentication_required=True,
     post_processing_func=None,
     authentication_token_decoder="auth.decode_access_token",
-    service_authorization_checker="auth.is_default_user",  # CHANGE FROM is_admin_user to is_default_user
+    service_authorization_checker="auth.is_admin_user",
     service_header_generator="auth.generate_request_header",
     response_model="datastructures.users.UserResponse",
     response_list=True,
@@ -74,7 +74,7 @@ async def get_users(request: Request, response: Response):
     authentication_required=True,
     post_processing_func=None,
     authentication_token_decoder="auth.decode_access_token",
-    service_authorization_checker="auth.is_default_user",  # CHANGE FROM is_admin_user to is_default_user
+    service_authorization_checker="auth.is_admin_user",
     service_header_generator="auth.generate_request_header",
     response_model="datastructures.users.UserResponse",
 )
