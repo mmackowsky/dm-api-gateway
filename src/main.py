@@ -130,7 +130,24 @@ async def update_user(
     service_header_generator="auth.generate_request_header",
     # response_model="datastructures.users.UserResponse",
 )
-async def get_energy(request: Request, response: Response):
+async def get_measurements(request: Request, response: Response):
+    pass
+
+
+@route(
+    request_method=app.post,
+    path="/api/fake-measurement",
+    status_code=status.HTTP_200_OK,
+    payload_key=None,
+    service_url=settings.ENERGY_SERVICE_URL,
+    authentication_required=True,
+    post_processing_func=None,
+    authentication_token_decoder="auth.decode_access_token",
+    service_authorization_checker="auth.is_default_user",  # CHANGE FROM is_admin_user to is_default_user
+    service_header_generator="auth.generate_request_header",
+    # response_model="datastructures.users.UserResponse",
+)
+async def fake_measurement(request: Request, response: Response):
     pass
 
 
