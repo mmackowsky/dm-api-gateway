@@ -1,0 +1,1 @@
+# DeviceMinder - API Gateway
