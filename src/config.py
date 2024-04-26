@@ -27,6 +27,7 @@ class Settings(BaseSettings):
     ENERGY_SERVICE_URL: str = os.getenv("ENERGY_SERVICE_URL")
     PAYMENTS_SERVICE_URL: str = os.getenv("PAYMENTS_SERVICE_URL")
     WATER_SERVICE_URL: str = os.getenv("WATER_SERVICE_URL")
+    DEVICES_SERVICE_URL: str = os.getenv("DEVICES_SERVICE_URL")
 
     class Config:
         env_file = ".env"
