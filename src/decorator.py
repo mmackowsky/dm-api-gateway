@@ -5,8 +5,8 @@ from typing import List
 import aiohttp
 from fastapi import HTTPException, Request, Response, status
 
-from exceptions import AuthTokenCorrupted, AuthTokenExpired, AuthTokenMissing
-from network import make_request
+from .exceptions import AuthTokenCorrupted, AuthTokenExpired, AuthTokenMissing
+from .network import make_request
 
 
 def route(
