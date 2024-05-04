@@ -2,7 +2,6 @@ import uvicorn
 from fastapi import FastAPI
 
 from config import get_settings
-from services import devices
 
 app = FastAPI()
 settings = get_settings()
