@@ -1,4 +1,4 @@
-from auth import generate_access_token
+from .auth import generate_access_token
 
 
 def access_token_generate_handler(data):
