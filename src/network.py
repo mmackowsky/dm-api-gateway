@@ -1,7 +1,7 @@
 import aiohttp
 import async_timeout
 
-from config import get_settings
+from .config import get_settings
 
 settings = get_settings()
 
