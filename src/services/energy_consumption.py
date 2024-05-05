@@ -1,8 +1,14 @@
 import uvicorn
-from fastapi import Request, Response, status
+from fastapi import FastAPI, Request, Response, status
 
+from src.config import get_settings
 from src.decorator import route
-from src.main import app, settings
+
+# from src.main import app, settings
+
+
+app = FastAPI()
+settings = get_settings()
 
 
 @route(
