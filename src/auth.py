@@ -2,8 +2,8 @@ from datetime import datetime, timedelta
 
 import jwt
 
-from .config import get_settings
-from .exceptions import AuthTokenCorrupted, AuthTokenExpired, AuthTokenMissing
+from src.config import get_settings
+from src.exceptions import AuthTokenCorrupted, AuthTokenExpired, AuthTokenMissing
 
 settings = get_settings()
 
