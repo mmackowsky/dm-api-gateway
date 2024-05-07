@@ -1,8 +1,7 @@
 import uvicorn
-from fastapi import FastAPI, Request, Response, status
+from fastapi import FastAPI
 
 from config import get_settings
-from datastructures.users import UsernamePasswordForm
 from services import devices, energy_consumption, payments, users, water_consumption
 
 app = FastAPI()
