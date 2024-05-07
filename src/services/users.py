@@ -4,7 +4,6 @@ from src.config import get_settings
 from src.datastructures.users import UserForm, UsernamePasswordForm, UserUpdateForm
 from src.handlers import auth_handler
 
-app = FastAPI()
 settings = get_settings()
 router = APIRouter(tags=["Users"])
 
