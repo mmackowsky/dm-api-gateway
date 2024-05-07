@@ -1,30 +1,39 @@
 import uvicorn
-from fastapi import FastAPI, Request, Response, status
+from fastapi import APIRouter, Depends, FastAPI, Request, Response, status
 
 from src.config import get_settings
 from src.decorator import route
+from src.handlers import auth_handler
 
 # from src.main import app, settings
 
 
 app = FastAPI()
+router = APIRouter()
 settings = get_settings()
 
 
-@route(
-    request_method=app.get,
-    path="/api/energy",
-    status_code=status.HTTP_200_OK,
-    payload_key=None,
-    service_url=settings.ENERGY_SERVICE_URL,
-    authentication_required=True,
-    post_processing_func=None,
-    authentication_token_decoder="auth.decode_access_token",
-    service_authorization_checker="auth.is_default_user",  # CHANGE FROM is_admin_user to is_default_user
-    service_header_generator="auth.generate_request_header",
-)
+@router.get("/api/energy", status_code=status.HTTP_200_OK)
 async def get_energy_consumptions(request: Request, response: Response):
-    pass
+    await auth_handler(
+        request=request, response=response, service_url=settings.ENERGY_SERVICE_URL
+    )
+
+
+# @route(
+#     request_method=app.get,
+#     path="/api/energy",
+#     status_code=status.HTTP_200_OK,
+#     payload_key=None,
+#     service_url=settings.ENERGY_SERVICE_URL,
+#     authentication_required=True,
+#     post_processing_func=None,
+#     authentication_token_decoder="auth.decode_access_token",
+#     service_authorization_checker="auth.is_default_user",  # CHANGE FROM is_admin_user to is_default_user
+#     service_header_generator="auth.generate_request_header",
+# )
+# async def get_energy_consumptions(request: Request, response: Response):
+#     pass
 
 
 @route(
