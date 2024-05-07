@@ -1,14 +1,14 @@
-from fastapi import APIRouter, FastAPI, Request, Response, status
+from fastapi import APIRouter, Request, Response, status
 
 from src.config import get_settings
 from src.datastructures.users import UserForm, UsernamePasswordForm, UserUpdateForm
 from src.handlers import auth_handler
 
 settings = get_settings()
-router = APIRouter(tags=["Users"])
+router = APIRouter(prefix="/api", tags=["Users"])
 
 
-@router.post("/api/login", status_code=status.HTTP_201_CREATED)
+@router.post("/login", status_code=status.HTTP_201_CREATED)
 async def login(
     username_password: UsernamePasswordForm, request: Request, response: Response
 ):
@@ -22,7 +22,7 @@ async def login(
     )
 
 
-@router.post("/api/users", status_code=status.HTTP_201_CREATED)
+@router.post("/users", status_code=status.HTTP_201_CREATED)
 async def register(user: UserForm, request: Request, response: Response):
     return await auth_handler(
         request=request,
@@ -33,7 +33,7 @@ async def register(user: UserForm, request: Request, response: Response):
     )
 
 
-@router.get("/api/users", status_code=status.HTTP_200_OK)
+@router.get("/users", status_code=status.HTTP_200_OK)
 async def get_users(request: Request, response: Response):
     return await auth_handler(
         request=request,
@@ -45,7 +45,7 @@ async def get_users(request: Request, response: Response):
     )
 
 
-@router.get("/api/users/{user_id}", status_code=status.HTTP_200_OK)
+@router.get("/users/{user_id}", status_code=status.HTTP_200_OK)
 async def get_user(user_id: int, request: Request, response: Response):
     return await auth_handler(
         request=request,
@@ -57,7 +57,7 @@ async def get_user(user_id: int, request: Request, response: Response):
     )
 
 
-@router.delete("/api/users/{user_id}", status_code=status.HTTP_204_NO_CONTENT)
+@router.delete("/users/{user_id}", status_code=status.HTTP_204_NO_CONTENT)
 async def delete_user(user_id: int, request: Request, response: Response):
     return await auth_handler(
         request=request,
@@ -69,7 +69,7 @@ async def delete_user(user_id: int, request: Request, response: Response):
     )
 
 
-@router.put("/api/users/{user_id}", status_code=status.HTTP_200_OK)
+@router.put("/users/{user_id}", status_code=status.HTTP_200_OK)
 async def update_user(
     user_id: int, user: UserUpdateForm, request: Request, response: Response
 ):
