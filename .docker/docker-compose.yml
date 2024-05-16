@@ -5,6 +5,9 @@ services:
     networks:
       - dm-energy-consumption
       - dm-users-service
+      - dm-devices
+      - dm-payments
+      - dm-water-consumption
     build:
       context: ../
       dockerfile: .docker/Dockerfile
@@ -19,4 +22,10 @@ networks:
   dm-energy-consumption:
     external: true
   dm-users-service:
+    external: true
+  dm-water-consumption:
+    external: true
+  dm-payments:
+    external: true
+  dm-devices:
     external: true
