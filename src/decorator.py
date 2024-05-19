@@ -39,10 +39,6 @@ def route(
         service_header_generator: generates headers for inner services from jwt token payload # noqa
         response_model: shows return type and details on api docs
         response_list: decides whether response structure is list or not
-
-    Returns:
-        wrapped endpoint result as is
-
     """
 
     # request_method: app.post || app.get or so on
